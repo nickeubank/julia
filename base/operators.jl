@@ -972,3 +972,22 @@ julia> filter(!isalpha, str)
 ```
 """
 !(f::Function) = (x...)->!f(x...)
+
+struct equalto{T} <: Function
+    x::T
+
+    equalto(x::T) where {T} = new{T}(x)
+end
+
+(f::equalto)(y) = isequal(f.x, y)
+
+"""
+    equalto(x)
+
+Create a function that compares its argument to `x` using [`isequal`](@ref); i.e. returns
+`y->isequal(x,y)`.
+
+`equalto` is also the type of the returned function. This allows dispatching to
+specialized methods by using e.g. `f::equalto` in a method signature.
+"""
+equalto
