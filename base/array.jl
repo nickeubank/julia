@@ -2204,8 +2204,8 @@ indmin(a) = findmin(a)[2]
 """
     indexin(a, b)
 
-Returns a vector containing the highest index in `b` for
-each value in `a` that is a member of `b` . The output
+Returns an array containing the highest index in `b` for
+each value in `a` that is a member of `b`. The output
 vector contains 0 wherever `a` is not a member of `b`.
 
 # Examples
